@@ -1,0 +1,8 @@
+{
+  "name": "live2me",
+  "app_id": "",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
