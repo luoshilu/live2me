@@ -12,6 +12,7 @@
 ### 开发目标
 
 - [ ] 前期主功能模块定位
+- [ ] 需求文档　－－　[文档链接](https://luoshilu.gitbooks.io/live2me-demand/content/)
 - [ ] APP原型
 ...
 
