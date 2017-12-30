@@ -29,9 +29,8 @@
 ### 前端界面
 - [ ] ion-tabs 和 ion-slides 结合使用
 - [ ] 欢迎页
-> 第一次开启app采用的是native的storage组件，第一次启动会写入storage一个变量firstIn,下次启动时如果读取到这个变量则直接跳过欢迎页
-> * 使用storage判断是否是第一次使用APP
-> * 改变根模块 this.app.getRootNav().setRoot(TabsPage);
+> ~~使用storage判断是否是第一次使用APP及改变根模块 -- 完成~~
+> 界面设计
 * 日程
 - [ ] 日程设计
 > ~~基础设计 -- 完成~~
