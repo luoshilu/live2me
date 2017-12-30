@@ -11,9 +11,9 @@ import {  IonicPage } from 'ionic-angular';
 })
 export class TabsPage {
 
-  tab1Root = 'HomePage';
-  tab2Root = 'AboutPage';
-  tab3Root = 'ContactPage';
+  today = 'HomePage';
+  list = 'ListPage';
+  me = 'MePage';
 
   constructor() {
 

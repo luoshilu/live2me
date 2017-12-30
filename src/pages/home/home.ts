@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, IonicPage } from 'ionic-angular';
+
+import { ModalController , IonicPage } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -7,9 +8,12 @@ import { NavController, IonicPage } from 'ionic-angular';
   templateUrl: 'home.html'
 })
 export class HomePage {
+  constructor(public modalCtrl: ModalController) { }
 
-  constructor(public navCtrl: NavController) {
+  openModal(characterNum) {
 
+    let modal = this.modalCtrl.create('ModalTaskPage',  characterNum);
+    modal.present();
   }
-
 }
+

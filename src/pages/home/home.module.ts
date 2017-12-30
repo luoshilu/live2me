@@ -10,4 +10,4 @@ import { IonicPageModule } from 'ionic-angular';
         IonicPageModule.forChild(HomePage)
     ]
 })
-export class TabsPageModule {}
+export class HomePageModule {}
