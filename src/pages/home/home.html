@@ -1,26 +1,24 @@
-
 <ion-header>
     <ion-navbar>
-      <ion-title>Modals</ion-title>
+      <ion-title>日程</ion-title>
     </ion-navbar>
   </ion-header>
   
   <ion-content>
   
     <ion-list>
-      <ion-list-header>
-        Hobbits
+      <ion-list-header *ngIf="(scheduleIds | async).length > 0" color="danger">
+        待完成
       </ion-list-header>
-      <a ion-item (click)="openModal({charNum: 0})">
-        Gollum
-      </a>
-      <a ion-item (click)="openModal({charNum: 1})">
-        Frodo Baggins
-      </a>
-      <a ion-item (click)="openModal({charNum: 2})">
-        Sam
-      </a>
+        <a ion-item *ngIf="(scheduleIds | async).length === 0">今天还没有安排噢</a>
+        <a ion-item *ngFor="let item of (schedules | async)" (click)="openModal({item: item})">{{item.name}}</a>
     </ion-list>
   
+    <ion-fab right bottom>
+        <button ion-fab  mini color="primary" (click)="openModal({id: '0'})">
+          <ion-icon name="add"></ion-icon>
+        </button>
+      </ion-fab>
+    
   </ion-content>
   

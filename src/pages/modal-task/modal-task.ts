@@ -1,54 +1,40 @@
 import { Component } from '@angular/core';
 import { IonicPage,Platform,ViewController, NavParams } from 'ionic-angular';
 
+// import { Data } from '../../server/data';
+
+import { Store } from '@ngrx/store';
+import * as fromRoot from '../../ngrx';
+import * as sche from '../../ngrx/action';
+
+import { Schedule } from '../../server/Utils';
 @IonicPage()
 @Component({
   selector: 'modal-task',
   templateUrl: 'modal-task.html'
 })
 export class ModalTaskPage {
-  character;
-
+  public schedule: Schedule;
   constructor(
+    private store: Store<fromRoot.State>,
     public platform: Platform,
     public params: NavParams,
     public viewCtrl: ViewController
   ) {
-    var characters = [
-      {
-        name: 'Gollum',
-        quote: 'Sneaky little hobbitses!',
-        image: 'assets/img/avatar-gollum.jpg',
-        items: [
-          { title: 'Race', note: 'Hobbit' },
-          { title: 'Culture', note: 'River Folk' },
-          { title: 'Alter Ego', note: 'Smeagol' }
-        ]
-      },
-      {
-        name: 'Frodo',
-        quote: 'Go back, Sam! I\'m going to Mordor alone!',
-        image: 'assets/img/avatar-frodo.jpg',
-        items: [
-          { title: 'Race', note: 'Hobbit' },
-          { title: 'Culture', note: 'Shire Folk' },
-          { title: 'Weapon', note: 'Sting' }
-        ]
-      },
-      {
-        name: 'Samwise Gamgee',
-        quote: 'What we need is a few good taters.',
-        image: 'assets/img/avatar-samwise.jpg',
-        items: [
-          { title: 'Race', note: 'Hobbit' },
-          { title: 'Culture', note: 'Shire Folk' },
-          { title: 'Nickname', note: 'Sam' }
-        ]
-      }
-    ];
-    this.character = characters[this.params.get('charNum')];
+    const id = this.params.get('id');
+    // 新增日程
+    if (id === '0') {
+      this.schedule = new Schedule("新计划");
+    }
+    // 打开某个日程详情
+    if (id !== '0') {
+      this.schedule = this.params.get('item');
+    }
   }
-
+  save() {
+    this.store.dispatch(new sche.AddScheAction(this.schedule));
+    this.dismiss();
+  }
   dismiss() {
     this.viewCtrl.dismiss();
   }
