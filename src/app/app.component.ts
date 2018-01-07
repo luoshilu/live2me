@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { Storage } from '@ionic/storage'; // storage
+import { DataStorage } from '../server/dataStorage'; // storage
 
 import { Store } from '@ngrx/store';
 import * as rootReducer from '../ngrx';
@@ -16,7 +16,7 @@ export class MyApp {
   TabsPage:any = 'TabsPage';
   welcomeHome:any = 'WelcomePage';
   welcome: Observable<Boolean>;
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, storage: Storage, store: Store<rootReducer.State>) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, data: DataStorage, store: Store<rootReducer.State>) {
 
     this.welcome = store.select(rootReducer.getScheduleWelcomeState);
 
@@ -24,7 +24,7 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
     });
-    storage.get('firstIn').then((res) => {
+    data.firstIn().then((res) => {
       // 第一次打开
       if (!res) {
         store.dispatch(new OpenWelcomeAction());

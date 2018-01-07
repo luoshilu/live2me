@@ -1,14 +1,13 @@
 // counter.ts
 import { Action } from '@ngrx/store';
-import { Schedule } from '../../server/Utils';
-import { OPEN_WELCOME } from '../action/openwelcome';
+import { OPEN_WELCOME, CLOSE_WELCOME } from '../action/openwelcome';
 
 export interface State {
     welcome: Boolean,
 }
 
 export const firstState = {
-    welcome: false
+    welcome: false // 默认不打开
 }
 
 export function ToWelcomeReducer (state: State = firstState, action: Action) {
@@ -19,6 +18,11 @@ export function ToWelcomeReducer (state: State = firstState, action: Action) {
             welcome: true
           }
         }
+        case CLOSE_WELCOME: {
+            return {
+              welcome: false
+            }
+          }
         default: {
           return state;
         }

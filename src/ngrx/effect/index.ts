@@ -20,20 +20,25 @@ import * as scheAction from '../action/index';
 @Injectable()
 export class AuthEffects {
 
-    // @Effect()
-    // loadSche$: Observable<Action> = this.actions$
-    //     .ofType(scheAction.LOAD_SCHE)
-    //     .startWith(new scheAction.LoadScheAction())
-    //     .mergeMap(() =>
-    //         // 获取日程列表
-    //         this.data.getSchedules()
-    //         .then((res) => {
-    //             if (res) {
-    //                 return new scheAction.LoadScheSuccessAction(res);
-    //             }
-    //         }).catch(error => new scheAction.LoadScheFailedAction)
-    //     );
-    // 监听添加日程的action
+    @Effect()
+    loadSche$: Observable<Action> = this.actions$
+        .ofType(scheAction.LOAD_SCHE)
+        // .startWith(new scheAction.LoadScheAction())
+        .map(res => res)
+        .mergeMap(() => {
+                // 获取日程列表
+                return this.data.getSchedules()
+                .then((res) => {
+                    if (res) {
+                        return new scheAction.LoadScheSuccessAction(res);
+                    } else {
+                        return new scheAction.LoadScheFailedAction();
+                    }
+                }).catch(error => new scheAction.LoadScheFailedAction())
+            }
+        );
+
+    // 添加日程的action
     @Effect()
     sche$: Observable<Action> = this.actions$
         .ofType(scheAction.ADD_SCHE)
@@ -45,10 +50,10 @@ export class AuthEffects {
             .catch(() => of({ type: 'SCHE_FAILED' }))
         );
 
-  constructor(
-    // private http: Http,
-    private actions$: Actions,
-    private data: DataStorage,
-    // private db: Database
-  ) {}
+    constructor(
+        // private http: Http,
+        private actions$: Actions,
+        private data: DataStorage,
+        // private db: Database
+    ) {}
 }

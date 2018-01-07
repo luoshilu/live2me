@@ -1,7 +1,7 @@
 // counter.ts
 import { Action } from '@ngrx/store';
 import { Schedule } from '../../server/Utils';
-import { EDIT_SCHE, ADD_SCHE, LOAD_SCHE_SUCCESS } from '../action/index';
+import { EDIT_SCHE, ADD_SCHE, LOAD_SCHE_SUCCESS, LOAD_SCHE } from '../action/index';
 
 export interface State {
     ids: string[],
@@ -19,7 +19,7 @@ export function ScheduleReducer (state: State = firstState, action: Action) {
         case ADD_SCHE: {
           let newSc = {[payload.id]: payload};
           return {
-            ids: [...state.ids, payload.id],
+            ids: [payload.id, ...state.ids],
             schedules: Object.assign({}, state.schedules, newSc)
           }
         }
@@ -35,13 +35,18 @@ export function ScheduleReducer (state: State = firstState, action: Action) {
           let sches: {[id: string]: Schedule} = {};
           // console.log(payload);
           payload.forEach(sche => {
-            ids.unshift(sche.id);
-            Object.assign(sches, {[sche.id]: sche});
+            if (sche) {
+              ids.unshift(sche.id);
+              Object.assign(sches, {[sche.id]: sche});
+            }
           })
           return {
             ids: ids,
             schedules: sches
           }
+        }
+        case LOAD_SCHE: {
+          return state;
         }
         default: {
           return state;

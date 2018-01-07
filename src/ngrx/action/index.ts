@@ -2,7 +2,7 @@
 import { Action } from '@ngrx/store';
 import { Schedule } from '../../server/Utils';
 
-export const LOAD_SCHE = 'ADD_SCHE'; // 获取日程列表
+export const LOAD_SCHE = 'LOAD_SCHE'; // 获取日程列表
 export const ADD_SCHE = 'ADD_SCHE'; // 添加日程列表
 export const DEL_SCHE = 'DEL_SCHE'; // 删除日程列表
 export const FIND_SCHE = 'FIND_SCHE'; // 查询日程列表

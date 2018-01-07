@@ -10,6 +10,8 @@ import { Operat } from '../../server/operators';
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../../ngrx'
 import { Observable } from 'rxjs/Observable';
+
+import {LoadScheAction} from '../../ngrx/action/index'
 @IonicPage()
 @Component({
   selector: 'page-home',
@@ -25,6 +27,7 @@ export class HomePage {
     private store: Store< fromRoot.State>) {
       this.scheduleIds = this.store.select(fromRoot.getScheduleIds);
       this.schedules = this.store.select(fromRoot.getSchedulesList);
+      this.store.dispatch(new LoadScheAction);
    }
 
   openModal(select) {

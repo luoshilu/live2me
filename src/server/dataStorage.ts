@@ -30,4 +30,19 @@ export class DataStorage {
       }
     }).catch(e => false)
   }
+  /**
+   * 初始访问
+   * @param data 
+   */
+  firstIn(data?:Boolean): Promise<Boolean>{
+
+    // get
+    if (typeof data === 'undefined') {
+      return this.storage.get('firstIn').then(res=>res).catch(e=>e);
+    }
+    // set
+    if (data) {
+      return this.storage.set('firstIn', data).then(res=>res).catch(e=>e);
+    }
+  }
 }

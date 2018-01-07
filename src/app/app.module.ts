@@ -25,6 +25,7 @@ import { reducer } from '../ngrx/index';
 // effects
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from '../ngrx/effect/index';
+import { WelcomeEffects } from '../ngrx/effect/welcome.effect';
 @NgModule({
   declarations: [
     MyApp
@@ -33,6 +34,7 @@ import { AuthEffects } from '../ngrx/effect/index';
     StoreModule.provideStore(reducer),
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
     EffectsModule.run(AuthEffects),
+    EffectsModule.run(WelcomeEffects),
     BrowserModule,
     IonicModule.forRoot(MyApp, {
       statusbarPadding: true
