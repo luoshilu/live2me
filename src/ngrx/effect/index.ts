@@ -14,26 +14,26 @@ import { Action } from '@ngrx/store';
 import { Actions, Effect } from '@ngrx/effects';
 
 import * as scheAction from '../action/index';
-import { Schedule } from '../../server/Utils';
+// import { Schedule } from '../../server/Utils';
 
 
 @Injectable()
 export class AuthEffects {
 
-    @Effect()
-    loadSche$: Observable<Action> = this.actions$
-        .ofType(scheAction.LOAD_SCHE)
-        // .startWith(new scheAction.LoadScheAction())
-        .mergeMap(() =>
-            // 获取日程列表
-            this.data.getSchedules()
-            .then((res) => {
-                if (res) {
-                    return new scheAction.LoadScheSuccessAction(res);
-                }
-            })
-        );
-  // 监听添加日程的action
+    // @Effect()
+    // loadSche$: Observable<Action> = this.actions$
+    //     .ofType(scheAction.LOAD_SCHE)
+    //     .startWith(new scheAction.LoadScheAction())
+    //     .mergeMap(() =>
+    //         // 获取日程列表
+    //         this.data.getSchedules()
+    //         .then((res) => {
+    //             if (res) {
+    //                 return new scheAction.LoadScheSuccessAction(res);
+    //             }
+    //         }).catch(error => new scheAction.LoadScheFailedAction)
+    //     );
+    // 监听添加日程的action
     @Effect()
     sche$: Observable<Action> = this.actions$
         .ofType(scheAction.ADD_SCHE)

@@ -1,14 +1,13 @@
 import {App } from 'ionic-angular';  
 import { Component } from '@angular/core';
 import { IonicPage} from 'ionic-angular';
-import { TabsPage } from '../tabs/tabs';  
-/**
- * Generated class for the WelcomePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
+import { Store } from '@ngrx/store';
+import * as fromRoot from '../../ngrx';
+
+import { Storage } from '@ionic/storage'; // storage
+
+import { OpenWelcomeAction } from '../../ngrx/action/openwelcome';
 @IonicPage()
 @Component({
   selector: 'page-welcome',
@@ -16,11 +15,11 @@ import { TabsPage } from '../tabs/tabs';
 })
 export class WelcomePage {
 
-  constructor(private app: App) {
-  }
+  constructor(private app: App, private storage: Storage, private store: Store<fromRoot.State>) {}
 
-  goHome() {
-    this.app.getRootNav().setRoot(TabsPage);
+  OpenWelcome() {
+    this.storage.set('firstIn', true);
+    // 跳到首页
+    this.store.dispatch(new OpenWelcomeAction());
   }
-
 }

@@ -4,25 +4,30 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Storage } from '@ionic/storage'; // storage
 
+import { Store } from '@ngrx/store';
+import * as rootReducer from '../ngrx';
+import { Observable } from 'rxjs/Observable';
+
+import { OpenWelcomeAction } from '../ngrx/action/openwelcome';
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = 'TabsPage';
+  TabsPage:any = 'TabsPage';
+  welcomeHome:any = 'WelcomePage';
+  welcome: Observable<Boolean>;
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, storage: Storage, store: Store<rootReducer.State>) {
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, storage: Storage) {
+    this.welcome = store.select(rootReducer.getScheduleWelcomeState);
+
     platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
     });
-    storage.get('firstIn').then(res => {
-      if (res) {
-        this.rootPage = 'TabsPage';
-      } else {
-        storage.set('firstIn', true);
-        this.rootPage = 'WelcomePage'
+    storage.get('firstIn').then((res) => {
+      // 第一次打开
+      if (!res) {
+        store.dispatch(new OpenWelcomeAction());
       }
     })
   }

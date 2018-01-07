@@ -8,6 +8,7 @@ export const DEL_SCHE = 'DEL_SCHE'; // 删除日程列表
 export const FIND_SCHE = 'FIND_SCHE'; // 查询日程列表
 export const EDIT_SCHE = 'EDIT_SCHE'; // 修改日程列表
 export const LOAD_SCHE_SUCCESS = 'LOAD_SCHE_SUCCESS'; // 获取成功
+export const LOAD_SCHE_FAILED = 'LOAD_SCHE_FAILED'; // 获取成功
 
 export class AddScheAction implements Action {
     readonly type = ADD_SCHE;
@@ -22,6 +23,10 @@ export class LoadScheAction implements Action {
 export class LoadScheSuccessAction implements Action {
     readonly type = LOAD_SCHE_SUCCESS;
     constructor (public payload: Schedule[]){}
+}
+
+export class LoadScheFailedAction implements Action {
+    readonly type = LOAD_SCHE_FAILED;
 }
 
 export class EditScheAction implements Action {

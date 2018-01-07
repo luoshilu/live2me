@@ -33,9 +33,9 @@ export function ScheduleReducer (state: State = firstState, action: Action) {
         case LOAD_SCHE_SUCCESS: {
           let ids: string[] = [];
           let sches: {[id: string]: Schedule} = {};
-          console.log(payload);
+          // console.log(payload);
           payload.forEach(sche => {
-            ids.push(sche.id);
+            ids.unshift(sche.id);
             Object.assign(sches, {[sche.id]: sche});
           })
           return {

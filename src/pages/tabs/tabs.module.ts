@@ -8,6 +8,9 @@ import { IonicPageModule } from 'ionic-angular';
     ],
     imports: [
         IonicPageModule.forChild(TabsPage)
+    ],
+    entryComponents: [
+        TabsPage
     ]
 })
 export class TabsPageModule {}
