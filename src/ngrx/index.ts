@@ -1,5 +1,5 @@
 import { createSelector }     from 'reselect';
-// counter.ts
+
 import { ActionReducer, combineReducers } from '@ngrx/store';
 
 import  * as Schedule from './reducer/schedule.reducer';

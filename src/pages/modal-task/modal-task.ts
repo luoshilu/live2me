@@ -35,6 +35,10 @@ export class ModalTaskPage {
     this.store.dispatch(new sche.AddScheAction(this.schedule));
     this.dismiss();
   }
+  del() {
+    this.store.dispatch(new sche.DelScheAction(this.schedule));
+    this.dismiss();
+  }
   dismiss() {
     this.viewCtrl.dismiss();
   }

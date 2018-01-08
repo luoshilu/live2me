@@ -24,11 +24,35 @@ export class DataStorage {
         return this.storage.set('schedule', [data]).then(res => true).catch(e=>false);
       }
       if (res) {
-        console.log(data);
         res.push(data);
         return this.storage.set('schedule', res).then(res => true).catch(e=>false);
       }
     }).catch(e => false)
+  }
+  /**
+   * 删除日程
+   * @param data 
+   */
+  delSchedule(id): Promise<Boolean>{
+    return this.storage.get("schedule").then(res=>{
+      console.log(res);
+      let newSches = res.filter(sche => {
+        if (!sche && typeof(sche)!="undefined" && sche!=0) {
+          return false;
+        } else {
+          return sche.id&&sche.id != id;
+        }
+      });
+      console.log(newSches);
+      return this.storage.set("schedule", newSches).then(res=>{
+        console.log(res);
+        if (res) {
+          return true;
+        } else {
+          return false;
+        }
+      });
+    }).catch(e => false);
   }
   /**
    * 初始访问

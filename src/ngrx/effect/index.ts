@@ -34,7 +34,25 @@ export class AuthEffects {
                     } else {
                         return new scheAction.LoadScheFailedAction();
                     }
-                }).catch(error => new scheAction.LoadScheFailedAction())
+                }).catch(() => new scheAction.LoadScheFailedAction())
+            }
+        );
+
+    @Effect()
+    delSche$: Observable<Action> = this.actions$
+        .ofType(scheAction.DEL_SCHE)
+        // .startWith(new scheAction.LoadScheAction())
+        .map(res => res)
+        .mergeMap((res) => {
+                // 获取日程列表
+                return this.data.delSchedule(res.payload.id)
+                .then((res) => {
+                    if (res) {
+                        return new scheAction.DelScheSuccessAction();
+                    } else {
+                        return new scheAction.DelScheFailedAction();
+                    }
+                }).catch(() => new scheAction.DelScheFailedAction())
             }
         );
 

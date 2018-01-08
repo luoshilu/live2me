@@ -5,6 +5,8 @@ import { Schedule } from '../../server/Utils';
 export const LOAD_SCHE = 'LOAD_SCHE'; // 获取日程列表
 export const ADD_SCHE = 'ADD_SCHE'; // 添加日程列表
 export const DEL_SCHE = 'DEL_SCHE'; // 删除日程列表
+export const DEL_SCHE_SUCCESS = 'DEL_SCHE_SUCCESS'; // 删除日程列表成功
+export const DEL_SCHE_FAILDED = 'DEL_SCHE_FAILDED'; // 删除日程列表失败
 export const FIND_SCHE = 'FIND_SCHE'; // 查询日程列表
 export const EDIT_SCHE = 'EDIT_SCHE'; // 修改日程列表
 export const LOAD_SCHE_SUCCESS = 'LOAD_SCHE_SUCCESS'; // 获取成功
@@ -15,6 +17,20 @@ export class AddScheAction implements Action {
     constructor (public payload: Schedule){}
 }
 
+export class DelScheAction implements Action {
+    readonly type = DEL_SCHE;
+    constructor (public payload: Schedule){}
+}
+
+export class DelScheSuccessAction implements Action {
+    readonly type = DEL_SCHE_SUCCESS;
+    constructor (){}
+}
+
+export class DelScheFailedAction implements Action {
+    readonly type = DEL_SCHE_FAILDED;
+    constructor (){}
+}
 export class LoadScheAction implements Action {
     readonly type = LOAD_SCHE;
     constructor (){}

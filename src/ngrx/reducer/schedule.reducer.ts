@@ -1,7 +1,7 @@
-// counter.ts
+
 import { Action } from '@ngrx/store';
 import { Schedule } from '../../server/Utils';
-import { EDIT_SCHE, ADD_SCHE, LOAD_SCHE_SUCCESS, LOAD_SCHE } from '../action/index';
+import { DEL_SCHE, EDIT_SCHE, ADD_SCHE, LOAD_SCHE_SUCCESS, LOAD_SCHE } from '../action/index';
 
 export interface State {
     ids: string[],
@@ -21,6 +21,15 @@ export function ScheduleReducer (state: State = firstState, action: Action) {
           return {
             ids: [payload.id, ...state.ids],
             schedules: Object.assign({}, state.schedules, newSc)
+          }
+        }
+        case DEL_SCHE: {
+          let newids: string[] = [];
+          newids = state.ids.filter(id => id !== payload.id);
+          delete state.schedules[payload.id];
+          return {
+            ids: newids,
+            schedules: state.schedules
           }
         }
         case EDIT_SCHE: {

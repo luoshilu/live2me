@@ -1,4 +1,4 @@
-// counter.ts
+
 import { Action } from '@ngrx/store';
 import { OPEN_WELCOME, CLOSE_WELCOME } from '../action/openwelcome';
 
