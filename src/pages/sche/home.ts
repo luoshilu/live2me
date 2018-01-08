@@ -17,7 +17,7 @@ import {LoadScheAction} from '../../ngrx/action/index'
   selector: 'page-home',
   templateUrl: 'home.html'
 })
-export class HomePage {
+export class SchePage {
   public scheduleIds: Observable<string[]>;
   public schedules: Observable<Schedule[]>;
   constructor(

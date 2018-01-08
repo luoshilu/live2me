@@ -7,8 +7,8 @@ import {  IonicPage } from 'ionic-angular';
 })
 export class TabsPage {
 
-  today = 'HomePage';
-  list = 'ListPage';
+  today = 'TodayPage';
+  sche = 'SchePage';
   me = 'MePage';
 
   constructor() {

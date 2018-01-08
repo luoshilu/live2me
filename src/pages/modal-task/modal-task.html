@@ -1,8 +1,9 @@
 
 <ion-header>
     <ion-toolbar>
-      <ion-title >
-        新建任务
+      <ion-title>
+        <span *ngIf="id === '0'">新建任务</span>
+        <span *ngIf="id !== '0'">编辑</span>
       </ion-title>
       <ion-buttons start>
         <button ion-button (click)="dismiss()">
@@ -25,19 +26,18 @@
           <ion-input  [(ngModel)]="schedule.detail"></ion-input>
         </ion-item>
       </ion-list>
-    
+
       <ion-list>
         <ion-item>
           <ion-label>开始日期</ion-label>
           <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="schedule.startTime"></ion-datetime>
         </ion-item>
-    
-    
+
         <ion-item>
           <ion-label>开始时间</ion-label>
           <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="schedule.startTime"></ion-datetime>
         </ion-item>
-    
+
         <ion-item>
           <ion-label>结束日期</ion-label>
           <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="schedule.endTime"></ion-datetime>
