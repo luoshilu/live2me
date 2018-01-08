@@ -49,9 +49,12 @@
           </ion-item>
       </ion-list>
       
-      <ion-item>
+      <ion-item *ngIf="id !== '0'">
         <button ion-button (click)="save()">保存</button>
         <button ion-button color="danger" (click)="del()">删除</button>
+      </ion-item>
+      <ion-item *ngIf="id === '0'">
+        <button ion-button (click)="add()">新增</button>
       </ion-item>
     </ion-content>
   

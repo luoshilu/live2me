@@ -6,7 +6,7 @@ import 'rxjs/add/operator/switchMap';
 // import { Database } from '@ngrx/db';
 
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs/observable/of';
+// import { of } from 'rxjs/observable/of';
 import { Observable } from 'rxjs/Observable';
 // import { Http } from '@angular/http';
 import { DataStorage } from '../../server/dataStorage';

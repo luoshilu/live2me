@@ -30,12 +30,34 @@ export class DataStorage {
     }).catch(e => false)
   }
   /**
+   * 编辑数据
+   * @param data 
+   */
+  editSchedule(data): Promise<Boolean>{
+    return this.storage.get('schedule').then(res => {
+      let result: Boolean = false;
+      let newsches = res.map(sche => {
+        if (sche&&sche.id === data.id) {
+          return data;
+        } else {
+          result = true;
+          return sche;
+        }
+      })
+      if (result) {
+        this.storage.set('schedule', newsches).then(res => true).catch(e=>false);
+      } else {
+        return false;
+      }
+    }).catch(e => false)
+  }
+  /**
    * 删除日程
    * @param data 
    */
   delSchedule(id): Promise<Boolean>{
     return this.storage.get("schedule").then(res=>{
-      console.log(res);
+
       let newSches = res.filter(sche => {
         if (!sche && typeof(sche)!="undefined" && sche!=0) {
           return false;
@@ -43,15 +65,8 @@ export class DataStorage {
           return sche.id&&sche.id != id;
         }
       });
-      console.log(newSches);
-      return this.storage.set("schedule", newSches).then(res=>{
-        console.log(res);
-        if (res) {
-          return true;
-        } else {
-          return false;
-        }
-      });
+
+      return this.storage.set("schedule", newSches).then(res=>true).catch(e=>false);
     }).catch(e => false);
   }
   /**

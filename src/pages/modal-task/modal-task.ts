@@ -15,13 +15,14 @@ import { Schedule } from '../../server/Utils';
 })
 export class ModalTaskPage {
   public schedule: Schedule;
+  public id: string;
   constructor(
     private store: Store<fromRoot.State>,
     public platform: Platform,
     public params: NavParams,
     public viewCtrl: ViewController
   ) {
-    const id = this.params.get('id');
+    const id = this.id = this.params.get('id')
     // 新增日程
     if (id === '0') {
       this.schedule = new Schedule("新计划");
@@ -31,8 +32,12 @@ export class ModalTaskPage {
       this.schedule = this.params.get('item');
     }
   }
-  save() {
+  add() {
     this.store.dispatch(new sche.AddScheAction(this.schedule));
+    this.dismiss();
+  }
+  save() {
+    this.store.dispatch(new sche.EditScheAction(this.schedule));
     this.dismiss();
   }
   del() {

@@ -11,7 +11,9 @@
         待完成
       </ion-list-header>
         <a ion-item *ngIf="(scheduleIds | async).length === 0">今天还没有安排噢</a>
-        <a ion-item *ngFor="let item of (schedules | async)" (click)="openModal({item: item})">{{item.name}}</a>
+        <a ion-item *ngFor="let item of (schedules | async)" (click)="openModal({item: item})">
+          <span *ngIf="!item.component">{{item.name}}</span>
+        </a>
     </ion-list>
   
     <ion-fab right bottom>
@@ -19,6 +21,5 @@
           <ion-icon name="add"></ion-icon>
         </button>
       </ion-fab>
-    
   </ion-content>
   

@@ -3,7 +3,7 @@ import {Injectable} from '@angular/core';
 // import { Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
-import {Observable, operators} from "rxjs";
+import {Observable} from "rxjs";
 
 import { Schedule } from './Utils';
 
