@@ -2,21 +2,24 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/throw';
 import { EffectsTestingModule, EffectsRunner } from '@ngrx/effects/testing';
 import { TestBed, fakeAsync, tick } from '@angular/core/testing';
-import { AuthEffects } from './index';
+import { TodayEffects } from './today.effect';
 // import { GoogleBooksService } from '../services/google-books';
 import { Observable } from 'rxjs/Observable';
-import { LoadScheAction, LoadScheSuccessAction } from '../action/index';
-import { Schedule } from '../../server/Utils';
+import { AddRestAction, SuccessRestAction } from '../action/today.action';
+import { DataStorage } from '../../server/dataStorage';
+import { Rest } from '../../server/Utils';
 
-// import { MyApp } from './app.component';
-
-describe('MyApp', () => {
+describe('today=>effect', () => {
     beforeEach(() => TestBed.configureTestingModule({
         imports: [
           EffectsTestingModule
         ],
         providers: [
-            AuthEffects
+            TodayEffects,
+            {
+                provide: DataStorage,
+                useValue: jasmine.createSpyObj('DataStorageService', ['addRest'])
+            }
         ]
       }));
     it('should create the root page', () => {

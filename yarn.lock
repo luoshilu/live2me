@@ -49,6 +49,10 @@
   dependencies:
     tslib "^1.7.1"
 
+"@angular/material@2.0.0-beta.3":
+  version "2.0.0-beta.3"
+  resolved "http://registry.npm.taobao.org/@angular/material/download/@angular/material-2.0.0-beta.3.tgz#ec31dee61d7300ece28fee476852db236ded1e13"
+
 "@angular/platform-browser-dynamic@^4.0.2":
   version "4.4.6"
   resolved "http://registry.npm.taobao.org/@angular/platform-browser-dynamic/download/@angular/platform-browser-dynamic-4.4.6.tgz#4d3d9a6a7bf2cf3de4058a615ae059eff641fa36"
@@ -1071,7 +1075,7 @@ cookiejar@^2.1.0:
   version "2.1.1"
   resolved "http://registry.npm.taobao.org/cookiejar/download/cookiejar-2.1.1.tgz#41ad57b1b555951ec171412a81942b1e8200d34a"
 
-core-js@^2.4.0, core-js@^2.5.0:
+core-js@^2.4.0, core-js@^2.4.1, core-js@^2.5.0:
   version "2.5.3"
   resolved "http://registry.npm.taobao.org/core-js/download/core-js-2.5.3.tgz#8acc38345824f16d8365b7c9b4259168e8ed603e"
 
@@ -1950,6 +1954,10 @@ graceful-fs@^4.1.0, graceful-fs@^4.1.11, graceful-fs@^4.1.2, graceful-fs@^4.1.6:
 growly@^1.3.0:
   version "1.3.0"
   resolved "http://registry.npm.taobao.org/growly/download/growly-1.3.0.tgz#f10748cbe76af964b7c96c93c6bcc28af120c081"
+
+hammerjs@^2.0.8:
+  version "2.0.8"
+  resolved "http://registry.npm.taobao.org/hammerjs/download/hammerjs-2.0.8.tgz#04ef77862cff2bb79d30f7692095930222bf60f1"
 
 handlebars@^4.0.3:
   version "4.0.11"
@@ -5091,6 +5099,6 @@ zip-stream@^1.1.0:
     lodash "^4.8.0"
     readable-stream "^2.0.0"
 
-zone.js@0.8.18:
-  version "0.8.18"
-  resolved "http://registry.npm.taobao.org/zone.js/download/zone.js-0.8.18.tgz#8cecb3977fcd1b3090562ff4570e2847e752b48d"
+zone.js@^0.8.4:
+  version "0.8.19"
+  resolved "http://registry.npm.taobao.org/zone.js/download/zone.js-0.8.19.tgz#a4b522cd9e8b7b616a638c297d720d4c7f292f71"

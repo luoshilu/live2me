@@ -11,7 +11,7 @@ import { Store } from '@ngrx/store';
 import * as fromRoot from '../../ngrx'
 import { Observable } from 'rxjs/Observable';
 
-import {LoadScheAction} from '../../ngrx/action/index'
+import {LoadScheAction} from '../../ngrx/action/sche.action'
 @IonicPage()
 @Component({
   selector: 'page-home',

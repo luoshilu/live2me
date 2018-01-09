@@ -1,3 +1,5 @@
+// import 'zone.js/dist/zone';
+
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/catch';
@@ -18,7 +20,7 @@ import * as scheAction from '../action/sche.action';
 
 
 @Injectable()
-export class AuthEffects {
+export class ScheEffects {
 
     @Effect()
     loadSche$: Observable<Action> = this.actions$

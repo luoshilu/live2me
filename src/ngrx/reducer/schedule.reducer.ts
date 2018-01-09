@@ -1,7 +1,7 @@
 
 import { Action } from '@ngrx/store';
 import { Schedule } from '../../server/Utils';
-import { DEL_SCHE, EDIT_SCHE, ADD_SCHE, LOAD_SCHE_SUCCESS, LOAD_SCHE } from '../action/index';
+import { DEL_SCHE, EDIT_SCHE, ADD_SCHE, LOAD_SCHE_SUCCESS, LOAD_SCHE } from '../action/sche.action';
 
 export interface State {
     ids: string[],

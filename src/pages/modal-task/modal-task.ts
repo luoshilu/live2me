@@ -5,7 +5,7 @@ import { IonicPage,Platform,ViewController, NavParams } from 'ionic-angular';
 
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../../ngrx';
-import * as sche from '../../ngrx/action';
+import * as sche from '../../ngrx/action/sche.action';
 
 import { Schedule } from '../../server/Utils';
 @IonicPage()

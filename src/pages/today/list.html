@@ -7,26 +7,23 @@
 </ion-header>
 
 <ion-content padding>
-    <ion-card>
+    <ion-card *ngFor="let item of rest$ | async" (swiperight)="delRest(item)" (click)="editRest(item)">
       <ion-card-header>
           <ion-item>
-              <ion-label>去游泳</ion-label>
-              <ion-checkbox color="danger" checked="true" disabled="true" readonly></ion-checkbox>
+            <ion-label>{{item.name}}</ion-label>
+            <ion-checkbox *ngIf="item.complent" color="danger" checked="true" disabled="true" readonly></ion-checkbox>
           </ion-item>
       </ion-card-header>
     
-      <ion-card-content>
-          card-contentcard-contentcard-content
+      <ion-card-content *ngIf="item.detail">
+          {{item.detail}}
       </ion-card-content>
-    
+
     </ion-card>
 
-      <ion-item>
-        <ion-label floating>新任务</ion-label>
-        <ion-input type="text"></ion-input>
-      </ion-item>
-      <ion-item>
-          <ion-label floating>详情</ion-label>
-          <ion-input type="text"></ion-input>
-      </ion-item>
+    <ion-fab right bottom>
+      <button ion-fab  mini color="primary" (click)="addRest()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-fab>
 </ion-content>
