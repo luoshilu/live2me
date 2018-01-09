@@ -26,7 +26,7 @@ export class AuthEffects {
         // .startWith(new scheAction.LoadScheAction())
         .map(res => res)
         .mergeMap(() => {
-                // 获取日程列表
+                
                 return this.data.getSchedules()
                 .then((res) => {
                     if (res) {
@@ -44,7 +44,7 @@ export class AuthEffects {
         // .startWith(new scheAction.LoadScheAction())
         .map(res => res.payload)
         .mergeMap((res) => {
-                // 获取日程列表
+                
                 return this.data.delSchedule(res.id)
                 .then((res) => {
                     if (res) {
