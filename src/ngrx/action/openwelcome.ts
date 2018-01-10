@@ -1,6 +1,5 @@
 
 import { Action } from '@ngrx/store';
-import { Schedule } from '../../server/Utils';
 
 export const OPEN_WELCOME ='OPEN_WELCOME';
 export const CLOSE_WELCOME ='CLOSE_WELCOME';

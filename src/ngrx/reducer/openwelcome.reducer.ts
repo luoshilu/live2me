@@ -11,7 +11,7 @@ export const firstState = {
 }
 
 export function ToWelcomeReducer (state: State = firstState, action: Action) {
-    const { type, payload } = action;
+    const { type } = action;
     switch (type) {
         case OPEN_WELCOME: {
           return {

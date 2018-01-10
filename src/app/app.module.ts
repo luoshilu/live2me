@@ -27,6 +27,17 @@ import { EffectsModule } from '@ngrx/effects';
 import { ScheEffects } from '../ngrx/effect/sche.effect';
 import { TodayEffects } from '../ngrx/effect/today.effect';
 import { WelcomeEffects } from '../ngrx/effect/welcome.effect';
+
+import { HammerGestureConfig, HAMMER_GESTURE_CONFIG }from '@angular/platform-browser';
+
+// 自定义移动端事件
+// import * as Hammer                                   from 'hammerjs';
+export class MyHammerConfig extends HammerGestureConfig  {
+  overrides = <any>{
+    // 31允许各个方向滑动， direction: Hammer.DIRECTION_VERTICAL垂直方向，默认水平
+      'swipe': {velocity: 0.2, threshold: 12 } 
+  }
+}
 @NgModule({
   declarations: [
     MyApp
@@ -57,6 +68,7 @@ import { WelcomeEffects } from '../ngrx/effect/welcome.effect';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    {provide  : HAMMER_GESTURE_CONFIG, useClass : MyHammerConfig},
     Data,
     DataStorage,
     Operat,

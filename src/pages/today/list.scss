@@ -1,3 +1,16 @@
-page-about {
-
+.today-content {
+    position: relative;
+    width: 100%;
+    .rest-card {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        transition: left top right bottom .5s ease-in-out;
+    }
+    .rest-card.moving {
+        z-index: 100;
+    }
+    .rest-card.moved {
+        left: 0!important;
+    }
 }

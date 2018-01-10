@@ -48,7 +48,6 @@ export function RestReducer (state: State = firstState, action: Action) {
         case LOAD_REST_SUCCESS: {
             let ids: string[] = [];
             let rests: {[id: string]: Rest} = {};
-            console.log(payload);
             payload.forEach(sche => {
               if (sche) {
                 ids.unshift(sche.id);

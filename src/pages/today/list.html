@@ -7,20 +7,32 @@
 </ion-header>
 
 <ion-content padding>
-    <ion-card *ngFor="let item of rest$ | async" (swiperight)="delRest(item)" (click)="editRest(item)">
-      <ion-card-header>
-          <ion-item>
-            <ion-label>{{item.name}}</ion-label>
-            <ion-checkbox *ngIf="item.complent" color="danger" checked="true" disabled="true" readonly></ion-checkbox>
-          </ion-item>
-      </ion-card-header>
-    
-      <ion-card-content *ngIf="item.detail">
-          {{item.detail}}
-      </ion-card-content>
+  <div class="today-content">
+    <div class="rest-card"
+            *ngFor="let id of restIds$ | async;let i=index"
+            (panstart)="panstart(restsObj[id].x, restsObj[id].y)"
+            (panmove)="panmove($event, id)"
+            (panend)="panend(restsObj[id])"
+            (swiperight)="delRest(restsObj[id])"
+            (click)="editRest(restsObj[id])"
+            [style.left]="restsObj[id].x + 'px'"
+            [style.top]="restsObj[id].y +'px'"
+            >
+        <ion-card>
+          <ion-card-header>
+              <ion-item>
+                <ion-label color="danger">{{restsObj[id].name}}</ion-label>
+                <ion-checkbox *ngIf="restsObj[id].complent" color="danger" checked="true" disabled="true" readonly></ion-checkbox>
+              </ion-item>
+          </ion-card-header>
 
-    </ion-card>
+          <ion-card-content *ngIf="restsObj[id].detail">
+              {{restsObj[id].detail}}
+          </ion-card-content>
 
+        </ion-card>
+      </div>
+    </div>
     <ion-fab right bottom>
       <button ion-fab  mini color="primary" (click)="addRest()">
         <ion-icon name="add"></ion-icon>

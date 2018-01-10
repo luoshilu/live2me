@@ -30,7 +30,6 @@ export class TodayEffects {
                 return this.data.getRests()
                 .then((res: Rest[]) => {
                     if (res) {
-                        console.log(res);
                         return new restAction.SuccessLoadRestAction(res);
                     } else {
                         return new restAction.FailRestAction();

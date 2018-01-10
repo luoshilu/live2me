@@ -12,6 +12,9 @@ import {Operat} from './operators';
     startTime: string;
     endTime: string;
     complent: boolean;
+    x: number;
+    height: number;
+    y: number;
     constructor(name: string){
         let dt = (new Operat()).dateFormat;
         this.id = 'rest' + (new Date()).getTime();
@@ -20,6 +23,9 @@ import {Operat} from './operators';
         this.startTime = dt(new Date(), 'yyyy-MM-ddThh:mm:ss+08:00');
         this.endTime = dt(new Date((new Date()).getTime() + 1000*3600*24), 'yyyy-MM-ddThh:mm:ss+08:00');
         this.complent = false;
+        this.x = 0;
+        this.height = 0;
+        this.y = 0;
     }
  }
 
