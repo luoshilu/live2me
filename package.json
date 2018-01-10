@@ -19,13 +19,13 @@
     "@angular/core": "^4.0.2",
     "@angular/forms": "^4.0.2",
     "@angular/http": "^4.0.2",
-    "@angular/material": "2.0.0-beta.3",
+    "@angular/material": "^5.0.4",
     "@angular/platform-browser": "^4.0.2",
     "@angular/platform-browser-dynamic": "^4.0.2",
     "@angular/router": "^4.0.2",
-    "@ionic-native/core": "4.4.0",
-    "@ionic-native/splash-screen": "4.4.0",
-    "@ionic-native/status-bar": "4.4.0",
+    "@ionic-native/core": "4.3.3",
+    "@ionic-native/splash-screen": "4.3.3",
+    "@ionic-native/status-bar": "4.3.3",
     "@ionic/storage": "2.1.3",
     "@ngrx/core": "^1.0.0",
     "@ngrx/db": "^2.0.2",
@@ -33,15 +33,18 @@
     "@ngrx/router-store": "^1.2.6",
     "@ngrx/store": "^2.2.2",
     "@ngrx/store-devtools": "^3.2.0",
+    "core-js": "^2.4.1",
+    "hammerjs": "^2.0.8",
     "ionic-angular": "3.9.2",
+    "ionic-plugin-keyboard": "^2.2.1",
     "ionicons": "3.0.0",
     "ngrx-store-freeze": "^0.1.6",
     "reselect": "^3.0.1",
     "rxjs": "5.5.2",
     "sw-toolbox": "3.6.0",
-    "core-js": "^2.4.1",
-    "hammerjs": "^2.0.8",
-    "zone.js": "^0.8.4"
+    "zone.js": "^0.8.4",
+    "cordova-ios": "4.5.4",
+    "cordova-android": "~7.0.0"
   },
   "devDependencies": {
     "@ionic/app-scripts": "3.1.6",
@@ -62,5 +65,27 @@
       "node_modules/(?!@ngrx|@ionic-native|@ionic)"
     ]
   },
-  "description": "An Ionic project"
+  "cordovaPlugins": [
+    "cordova-plugin-device",
+    "cordova-plugin-whitelist",
+    "cordova-plugin-splashscreen",
+    "cordova-plugin-statusbar",
+    "ionic-plugin-keyboard"
+  ],
+  "cordovaPlatforms": [
+    "ios",
+    {
+      "platform": "ios",
+      "version": "",
+      "locator": "ios"
+    },
+    "android"
+  ],
+  "description": "ionic-preview-app: An Ionic project",
+  "cordova": {
+    "platforms": [
+      "ios",
+      "android"
+    ]
+  }
 }
