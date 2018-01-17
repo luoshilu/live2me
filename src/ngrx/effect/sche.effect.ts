@@ -34,9 +34,9 @@ export class ScheEffects {
                     if (res) {
                         return new scheAction.LoadScheSuccessAction(res);
                     } else {
-                        return new scheAction.LoadScheFailedAction();
+                        return new scheAction.LoadScheFailedAction('loadsche error');
                     }
-                }).catch(() => new scheAction.LoadScheFailedAction())
+                }).catch((e) => new scheAction.LoadScheFailedAction(e))
             }
         );
 
@@ -52,9 +52,9 @@ export class ScheEffects {
                     if (res) {
                         return new scheAction.ScheSuccessAction();
                     } else {
-                        return new scheAction.ScheFailedAction();
+                        return new scheAction.ScheFailedAction('loadsche error');
                     }
-                }).catch(() => new scheAction.ScheFailedAction())
+                }).catch((e) => new scheAction.ScheFailedAction(e))
             }
         );
 
@@ -69,9 +69,9 @@ export class ScheEffects {
                     if (res) {
                         return new scheAction.ScheSuccessAction();
                     } else {
-                        return new scheAction.ScheFailedAction();
+                        return new scheAction.ScheFailedAction('loadsche error');
                     }
-                }).catch(() => new scheAction.ScheFailedAction())
+                }).catch((e) => new scheAction.ScheFailedAction(e))
             }
         );
     // 添加日程的action
@@ -85,9 +85,9 @@ export class ScheEffects {
                 if (res) {
                     return new scheAction.ScheSuccessAction();
                 } else {
-                    return new scheAction.ScheFailedAction();
+                    return new scheAction.ScheFailedAction('loadsche error');
                 }
-            }).catch(() => new scheAction.ScheFailedAction())
+            }).catch((e) => new scheAction.ScheFailedAction(e))
         }
         );
 

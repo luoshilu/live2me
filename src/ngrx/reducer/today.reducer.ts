@@ -1,7 +1,7 @@
 
 import { Action } from '@ngrx/store';
 import { Rest } from '../../server/Utils';
-import { DEL_REST, EDIT_REST, ADD_REST, REST_SUCCESS, LOAD_REST, LOAD_REST_SUCCESS } from '../action/today.action';
+import { DEL_REST, EDIT_REST, ADD_REST, REST_SUCCESS, REST_FAILDED, LOAD_REST, LOAD_REST_SUCCESS } from '../action/today.action';
 
 export interface State {
     ids: string[],
@@ -39,6 +39,10 @@ export function RestReducer (state: State = firstState, action: Action) {
               rests: Object.assign({}, state.rests, newRest)
           }
         }
+        case REST_FAILDED: {
+          console.log(payload);
+          return state;
+      }
         case REST_SUCCESS: {
             return state;
         }

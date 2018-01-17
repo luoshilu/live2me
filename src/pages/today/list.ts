@@ -70,15 +70,13 @@ export class TodayPage {
   delRest(item) {
     this.store.dispatch(new todayRest.DelRestAction(item));
   }
-  swipeup(evt) {
-    log(evt.target);
-    // log('123');
-  }
-  panstart(x,y){
-    this.x = x;
-    this.y = y;
+  press(id){
+    this.restsObj[id].moving = true;
+    this.x = this.restsObj[id].x;
+    this.y = this.restsObj[id].y;
   }
   panmove(evt, id){
+    if (!this.restsObj[id].moving) {return}
     // 获取移动距离
     let mvx = evt.deltaX;
     let mvy = evt.deltaY;
@@ -87,8 +85,10 @@ export class TodayPage {
     this.restsObj[id].y = mvy + this.y;
   }
   panend(item){
+    if (!item.moving){return};
     // 发起action,修改rest的store，storage数据
     item.x = 0;  // 居中
+    item.moving = false;
     this.store.dispatch(new todayRest.EditRestAction(item));
   }
   editRest(item) {

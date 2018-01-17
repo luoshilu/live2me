@@ -38,14 +38,14 @@ export class DataStorage {
       let result: Boolean = false;
       let newsches = res.map(sche => {
         if (sche&&sche.id === data.id) {
+          result = true;
           return data;
         } else {
-          result = true;
           return sche;
         }
       })
       if (result) {
-        this.storage.set('schedule', newsches).then(res => true).catch(e=>false);
+        return this.storage.set('schedule', newsches).then(res => true).catch(e=>false);
       } else {
         return false;
       }
@@ -99,15 +99,16 @@ export class DataStorage {
     return this.storage.get('Rest').then(res => {
       let result: Boolean = false;
       let newsches = res.map(sche => {
-        if (sche&&sche.id === data.id) {
+        // 如果找到了要编辑的对象，则返回新对象
+        if (sche.id === data.id) {
+          result = true;
           return data;
         } else {
-          result = true;
           return sche;
         }
       })
       if (result) {
-        this.storage.set('Rest', newsches).then(res => true).catch(e=>false);
+        return this.storage.set('Rest', newsches).then(res => true).catch(e=>false);
       } else {
         return false;
       }

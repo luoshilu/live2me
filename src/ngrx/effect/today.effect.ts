@@ -32,9 +32,9 @@ export class TodayEffects {
                     if (res) {
                         return new restAction.SuccessLoadRestAction(res);
                     } else {
-                        return new restAction.FailRestAction();
+                        return new restAction.FailRestAction(res);
                     }
-                }).catch(() => new restAction.FailRestAction())
+                }).catch((e) => new restAction.FailRestAction(e))
             }
         );
 
@@ -50,9 +50,9 @@ export class TodayEffects {
                     if (res) {
                         return new restAction.SuccessRestAction();
                     } else {
-                        return new restAction.FailRestAction();
+                        return new restAction.FailRestAction(res);
                     }
-                }).catch(() => new restAction.FailRestAction())
+                }).catch((e) => new restAction.FailRestAction(e))
             }
         );
 
@@ -67,9 +67,9 @@ export class TodayEffects {
                     if (res) {
                         return new restAction.SuccessRestAction();
                     } else {
-                        return new restAction.FailRestAction();
+                        return new restAction.FailRestAction(res);
                     }
-                }).catch(() => new restAction.FailRestAction())
+                }).catch((e) => new restAction.FailRestAction(e))
             }
         );
     // 添加日程的action
@@ -83,9 +83,9 @@ export class TodayEffects {
                 if (res) {
                     return new restAction.SuccessRestAction();
                 } else {
-                    return new restAction.FailRestAction();
+                    return new restAction.FailRestAction(res);
                 }
-            }).catch(() => new restAction.FailRestAction())
+            }).catch((e) => new restAction.FailRestAction(e))
         });
 
     constructor(

@@ -15,6 +15,7 @@ import {Operat} from './operators';
     x: number;
     height: number;
     y: number;
+    moving: Boolean; // 是否在移动中
     constructor(name: string){
         let dt = (new Operat()).dateFormat;
         this.id = 'rest' + (new Date()).getTime();
@@ -26,6 +27,7 @@ import {Operat} from './operators';
         this.x = 0;
         this.height = 0;
         this.y = 0;
+        this.moving = false;
     }
  }
 

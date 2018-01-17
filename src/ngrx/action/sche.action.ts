@@ -39,6 +39,7 @@ export class LoadScheSuccessAction implements Action {
 
 export class LoadScheFailedAction implements Action {
     readonly type = LOAD_SCHE_FAILED;
+    constructor(public payload?: string){}
 }
 
 export class FindScheAction implements Action {
@@ -53,6 +54,6 @@ export class ScheSuccessAction implements Action {
 
 export class ScheFailedAction implements Action {
     readonly type = SCHE_FAILDED;
-    constructor (){}
+    constructor (public payload?: any){}
 }
 export type Actions = AddScheAction | LoadScheAction | EditScheAction | FindScheAction;

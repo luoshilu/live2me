@@ -9,15 +9,16 @@
 <ion-content padding>
   <div class="today-content">
     <div class="rest-card"
-            *ngFor="let id of restIds$ | async;let i=index"
-            (panstart)="panstart(restsObj[id].x, restsObj[id].y)"
-            (panmove)="panmove($event, id)"
-            (panend)="panend(restsObj[id])"
-            (swiperight)="delRest(restsObj[id])"
-            (click)="editRest(restsObj[id])"
-            [style.left]="restsObj[id].x + 'px'"
-            [style.top]="restsObj[id].y +'px'"
-            >
+        [ngClass]="{moving: restsObj[id].moving}"
+        *ngFor="let id of restIds$ | async;let i=index"
+        (press)="press(id)"
+        (panmove)="panmove($event, id)"
+        (panend)="panend(restsObj[id])"
+        (swiperight)="delRest(restsObj[id])"
+        (click)="editRest(restsObj[id])"
+        [style.left]="restsObj[id].x + 'px'"
+        [style.top]="restsObj[id].y +'px'"
+        >
         <ion-card>
           <ion-card-header>
               <ion-item>

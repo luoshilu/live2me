@@ -5,9 +5,10 @@
         position: absolute;
         width: 100%;
         left: 0;
-        transition: left top right bottom .5s ease-in-out;
+        transition: left top right bottom 2s ease-in-out;
     }
     .rest-card.moving {
+        border: 1px solid #C41717;
         z-index: 100;
     }
     .rest-card.moved {

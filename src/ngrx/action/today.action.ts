@@ -10,8 +10,8 @@ export const ADD_REST ='ADD_REST';
 export const DEL_REST ='DEL_REST';
 export const EDIT_REST ='EDIT_REST';
 
-export const REST_SUCCESS = 'SCHE_SUCCESS'; // 日程操作成功
-export const REST_FAILDED = 'SCHE_FAILDED'; // 日程操作失败
+export const REST_SUCCESS = 'REST_SUCCESS'; // 日程操作成功
+export const REST_FAILDED = 'REST_FAILDED'; // 日程操作失败
 
 export class LoadRestAction implements Action {
     readonly type = LOAD_REST;
@@ -40,7 +40,7 @@ export class SuccessRestAction implements Action {
 }
 export class FailRestAction implements Action {
     readonly type = REST_FAILDED;
-    constructor (){}
+    constructor (public payload?: any){}
 }
 
 export class SuccessLoadRestAction implements Action {
