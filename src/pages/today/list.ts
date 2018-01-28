@@ -8,7 +8,10 @@ import * as todayRest from '../../ngrx/action/today.action';
 
 import { Rest } from '../../server/Utils';
 import { Observable } from 'rxjs/Observable';
-import { log } from 'util';
+// import { log } from 'util';
+
+// import date from 'date.js'; 
+
 @IonicPage()
 @Component({
   selector: 'page-list',
@@ -36,7 +39,6 @@ export class TodayPage {
 
       this.restsListObser = this.restList$.subscribe(rests=>this.restsList = rests);
       this.restsObjObser = this.restsObj$.subscribe(rests=>this.restsObj = rests);
-      
     }
   ngOnDestory() {
     this.restsObjObser.unsubscribe();

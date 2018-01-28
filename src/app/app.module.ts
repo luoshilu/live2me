@@ -51,7 +51,7 @@ export class MyHammerConfig extends HammerGestureConfig  {
     BrowserModule,
     IonicModule.forRoot(MyApp, {
       statusbarPadding: true
-    },
+    }
   ),
     IonicStorageModule.forRoot({
       name: '__mydb',
