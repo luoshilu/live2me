@@ -1213,13 +1213,19 @@ date-now@^0.1.4:
   version "0.1.4"
   resolved "http://registry.npm.taobao.org/date-now/download/date-now-0.1.4.tgz#eaf439fd4d4848ad74e5cc7dbef200672b9e345b"
 
+date.js@^0.3.2:
+  version "0.3.2"
+  resolved "http://registry.npm.taobao.org/date.js/download/date.js-0.3.2.tgz#69a91d90a5cc91664ff17d5f43f0cb73e615c390"
+  dependencies:
+    debug "~3.1.0"
+
 debug@2.6.9, debug@^2.2.0, debug@^2.6.8, debug@~2.6.7:
   version "2.6.9"
   resolved "http://registry.npm.taobao.org/debug/download/debug-2.6.9.tgz#5d128515df134ff327e90a4c93f4e077a536341f"
   dependencies:
     ms "2.0.0"
 
-debug@^3.1.0:
+debug@^3.1.0, debug@~3.1.0:
   version "3.1.0"
   resolved "http://registry.npm.taobao.org/debug/download/debug-3.1.0.tgz#5bb5a0672628b64149566ba16819e61518c67261"
   dependencies:
@@ -5022,6 +5028,6 @@ yargs@~3.10.0:
     decamelize "^1.0.0"
     window-size "0.1.0"
 
-zone.js@0.8.11:
-  version "0.8.11"
-  resolved "http://registry.npm.taobao.org/zone.js/download/zone.js-0.8.11.tgz#742befb17fbc49a571712b8c7d87e58ca26fd886"
+zone.js@^0.8.4:
+  version "0.8.20"
+  resolved "http://registry.npm.taobao.org/zone.js/download/zone.js-0.8.20.tgz#a218c48db09464b19ff6fc8f0d4bb5b1046e185d"

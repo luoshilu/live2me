@@ -39,3 +39,5 @@
 ### 常用命令
 * ionic g page Setting
 > 创建一个界面，会自动在page目录下生成*.html,*.module.ts,*.scss,*,html文件
+更多创建组件，指令，管道的命令
+[](https://ionicframework.com/docs/cli/generate/)
