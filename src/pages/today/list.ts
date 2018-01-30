@@ -10,17 +10,25 @@ import { Rest } from '../../server/Utils';
 import { Observable } from 'rxjs/Observable';
 // import { log } from 'util';
 
-// import date from 'date.js'; 
+//pipes
+import { TimeToPositionPipe } from '../../pipes/time-to-position/time-to-position';
+import { MoveToTimePipe } from '../../pipes/move-to-time/move-to-time';
+
+import date from 'date.js';
 
 @IonicPage()
 @Component({
   selector: 'page-list',
-  templateUrl: 'list.html'
+  templateUrl: 'list.html',
+  providers: [TimeToPositionPipe, MoveToTimePipe]
 })
 export class TodayPage {
     restIds$: Observable<string[]>;
     restList$: Observable<Rest[]>;
     restsObj$: Observable<{[id: string]:Rest}>;
+
+    minTime = date(`yesterday at${(new Date()).getHours()}:00`);
+    nowTime: Date = new Date();
 
     restsList: Rest[]
     restsObj: {[id: string]:Rest}
@@ -30,17 +38,25 @@ export class TodayPage {
 
     x: number = 0;
     y: number = 0;
-    constructor(public navCtrl: NavController, public alertCtrl: AlertController, private store: Store<fromRoot.State>) {
+    constructor(
+      public navCtrl: NavController,
+      public alertCtrl: AlertController,
+      private store: Store<fromRoot.State>,
+      private timeTopositionPipe:TimeToPositionPipe,
+      private moveToTimePipe: MoveToTimePipe) {
       this.store.dispatch(new todayRest.LoadRestAction());
 
       this.restList$ = store.select(fromRoot.getRestsList);
       this.restsObj$ = store.select(fromRoot.getRests);
       this.restIds$ = store.select(fromRoot.getRestIds);
 
+      // 滚动条设置到当前时间轴
+      window.document.body.scrollTop = this.timeTopositionPipe.transform(this.nowTime, this.minTime, 'min');
       this.restsListObser = this.restList$.subscribe(rests=>this.restsList = rests);
       this.restsObjObser = this.restsObj$.subscribe(rests=>this.restsObj = rests);
     }
   ngOnDestory() {
+    this.restsListObser.unsubscribe();
     this.restsObjObser.unsubscribe();
   }
   addRest() {
@@ -73,9 +89,10 @@ export class TodayPage {
     this.store.dispatch(new todayRest.DelRestAction(item));
   }
   press(id){
-    this.restsObj[id].moving = true;
+    this.restsObj[id].y = this.timeTopositionPipe.transform(this.restsObj[id].startTime, this.minTime); // 将当前时间转化为top
     this.x = this.restsObj[id].x;
     this.y = this.restsObj[id].y;
+    this.restsObj[id].moving = true; // 移动中
   }
   panmove(evt, id){
     if (!this.restsObj[id].moving) {return}
@@ -88,10 +105,15 @@ export class TodayPage {
   }
   panend(item){
     if (!item.moving){return};
+    // 将移动距离调整为时间
+    let secend:number = this.moveToTimePipe.transform(item.y - this.y, 'min');
+    let time = item.startTime.getTime();
+    item.startTime = new Date(item.startTime.getTime() + secend);
+    item.endTime = date(item.endTime.getTime() + secend);
+    item.x = 0
     // 发起action,修改rest的store，storage数据
-    item.x = 0;  // 居中
-    item.moving = false;
     this.store.dispatch(new todayRest.EditRestAction(item));
+    item.moving = false;
   }
   editRest(item) {
     let prompt = this.alertCtrl.create({

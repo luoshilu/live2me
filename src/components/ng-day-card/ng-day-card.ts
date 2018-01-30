@@ -1,21 +1,21 @@
 import { Component } from '@angular/core';
 
 /**
- * Generated class for the TestHelloComponent component.
+ * Generated class for the NgDayCardComponent component.
  *
  * See https://angular.io/api/core/Component for more info on Angular
  * Components.
  */
 @Component({
-  selector: 'test-hello',
-  templateUrl: 'test-hello.html'
+  selector: 'ng-day-card',
+  templateUrl: 'ng-day-card.html'
 })
-export class TestHelloComponent {
+export class NgDayCardComponent {
 
   text: string;
 
   constructor() {
-    console.log('Hello TestHelloComponent Component');
+    console.log('Hello NgDayCardComponent Component');
     this.text = 'Hello World';
   }
 

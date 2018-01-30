@@ -1,6 +1,17 @@
 .today-content {
     position: relative;
     width: 100%;
+    .now-axis {
+        position: absolute;
+        width: 100%;
+        border-top:1px dashed #AF2525;
+        z-index: 1000;
+        .time-detail {
+            font-size: 12px;
+            color: #AF2525;
+            text-align: center;
+        }
+    }
     .rest-card {
         position: absolute;
         width: 100%;
@@ -8,7 +19,7 @@
         transition: left top right bottom 2s ease-in-out;
     }
     .rest-card.moving {
-        border: 1px solid #C41717;
+        border: 1px dashed #C41717;
         z-index: 100;
     }
     .rest-card.moved {

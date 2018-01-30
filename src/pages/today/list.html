@@ -9,6 +9,11 @@
 <ion-content padding>
   <ng-time-axis></ng-time-axis>
   <div class="today-content">
+    <!-- 当前时间 -->
+    <div class="now-axis" [style.top]="(nowTime | timeToPosition: minTime: 'min') + 'px'">
+      <div class="time-detail"><span>现在是{{nowTime | date:'HH:mm'}}</span></div>
+    </div>
+    <!-- 任务计划卡 -->
     <div class="rest-card"
         [ngClass]="{moving: restsObj[id].moving}"
         *ngFor="let id of restIds$ | async;let i=index"
@@ -18,7 +23,7 @@
         (swiperight)="delRest(restsObj[id])"
         (click)="editRest(restsObj[id])"
         [style.left]="restsObj[id].x + 'px'"
-        [style.top]="restsObj[id].y +'px'"
+        [style.top]="restsObj[id].moving?restsObj[id].y + 'px' : (restsObj[id].startTime | timeToPosition: minTime: 'min') + 'px'"
         >
         <ion-card>
           <ion-card-header>
