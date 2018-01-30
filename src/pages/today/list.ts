@@ -115,6 +115,9 @@ export class TodayPage {
     this.store.dispatch(new todayRest.EditRestAction(item));
     item.moving = false;
   }
+  rotatestart(e,id) {
+    console.log(e.target);
+  }
   editRest(item) {
     let prompt = this.alertCtrl.create({
       title: "编辑",

@@ -17,13 +17,16 @@
     <div class="rest-card"
         [ngClass]="{moving: restsObj[id].moving}"
         *ngFor="let id of restIds$ | async;let i=index"
+        (swiperight)="delRest(restsObj[id])"
         (press)="press(id)"
         (panmove)="panmove($event, id)"
         (panend)="panend(restsObj[id])"
-        (swiperight)="delRest(restsObj[id])"
         (click)="editRest(restsObj[id])"
         [style.left]="restsObj[id].x + 'px'"
         [style.top]="restsObj[id].moving?restsObj[id].y + 'px' : (restsObj[id].startTime | timeToPosition: minTime: 'min') + 'px'"
+        (rotatestart)="rotatestart($event, id)"
+        (rotatemove)="rotatemove($event, id)"
+        (rotateend)="rotateend($event, id)"
         >
         <ion-card>
           <ion-card-header>
