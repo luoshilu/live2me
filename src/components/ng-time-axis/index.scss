@@ -10,6 +10,8 @@ $scale-type: solid;
 
 $li-height: 15px;
 
+$font-color: #889a9a;
+
 .ng-ta-content {
     position: absolute;
     width: $width;
@@ -37,7 +39,7 @@ $li-height: 15px;
                     position: relative;
                     bottom: 0.8em;
                     left: 120%;
-                    color: #443838;
+                    color: $font-color;
                     font-size: 5px;
                 }
             }

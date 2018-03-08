@@ -30,6 +30,8 @@ import { WelcomeEffects } from '../ngrx/effect/welcome.effect';
 
 import { HammerGestureConfig, HAMMER_GESTURE_CONFIG }from '@angular/platform-browser';
 
+// onsenUI
+// import { OnsenModule } from 'ngx-onsenui';
 // 自定义移动端事件
 // import * as Hammer                                   from 'hammerjs';
 export class MyHammerConfig extends HammerGestureConfig  {
@@ -51,8 +53,7 @@ export class MyHammerConfig extends HammerGestureConfig  {
     BrowserModule,
     IonicModule.forRoot(MyApp, {
       statusbarPadding: true
-    }
-  ),
+    }),
     IonicStorageModule.forRoot({
       name: '__mydb',
       driverOrder: ['indexeddb', 'sqlite', 'websql']

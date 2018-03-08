@@ -40,7 +40,6 @@ export function RestReducer (state: State = firstState, action: Action) {
           }
         }
         case REST_FAILDED: {
-          console.log(payload);
           return state;
       }
         case REST_SUCCESS: {

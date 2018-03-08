@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, IonicPage } from 'ionic-angular';
+import { NavController, ModalController, IonicPage } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 
 import { Store } from '@ngrx/store';
@@ -43,46 +43,44 @@ export class TodayPage {
       public alertCtrl: AlertController,
       private store: Store<fromRoot.State>,
       private timeTopositionPipe:TimeToPositionPipe,
-      private moveToTimePipe: MoveToTimePipe) {
+      private moveToTimePipe: MoveToTimePipe,
+      private modalCtrl: ModalController) {
       this.store.dispatch(new todayRest.LoadRestAction());
 
       this.restList$ = store.select(fromRoot.getRestsList);
       this.restsObj$ = store.select(fromRoot.getRests);
       this.restIds$ = store.select(fromRoot.getRestIds);
 
-      // 滚动条设置到当前时间轴
-      window.document.body.scrollTop = this.timeTopositionPipe.transform(this.nowTime, this.minTime, 'min');
       this.restsListObser = this.restList$.subscribe(rests=>this.restsList = rests);
       this.restsObjObser = this.restsObj$.subscribe(rests=>this.restsObj = rests);
     }
-  ngOnDestory() {
+    ngOnInit() {
+      setInterval(()=>{
+        var now = new Date();
+        if (now.getMinutes() !== this.nowTime.getMinutes())
+        {
+          this.nowTime = now;
+        }
+      },1000);
+    }
+    ngAfterViewInit() {
+      console.log('ending');
+      // 
+      // 滚动条设置到当前时间轴
+      setTimeout(()=>{
+        var h = this.timeTopositionPipe.transform(this.nowTime, this.minTime, 'min');
+        console.log(h);
+        document.body.scrollTop = 500;
+        document.documentElement.scrollTop = 500;
+        // window.scrollTo(0, h);
+      },500);
+    }
+    ngOnDestory() {
     this.restsListObser.unsubscribe();
     this.restsObjObser.unsubscribe();
   }
   addRest() {
-    let prompt = this.alertCtrl.create({
-      title: "新建任务",
-      inputs: [{
-        name: 'name',
-        placeholder: '任务名称'
-      }],
-      buttons: [
-        {
-          text: '取消',
-          handler: data => {
-            console.log('Cancel clicked');
-          }
-        },
-        {
-          text: '保存',
-          handler: data => {
-            let newrest = new Rest(data.name);
-            this.store.dispatch(new todayRest.AddRestAction(newrest));
-          }
-        }
-      ]
-    })
-    prompt.present();
+    this.modalCtrl.create('ModalTodayPage').present();
   }
 
   delRest(item) {
@@ -107,9 +105,8 @@ export class TodayPage {
     if (!item.moving){return};
     // 将移动距离调整为时间
     let secend:number = this.moveToTimePipe.transform(item.y - this.y, 'min');
-    let time = item.startTime.getTime();
-    item.startTime = new Date(item.startTime.getTime() + secend);
-    item.endTime = date(item.endTime.getTime() + secend);
+    item.startTime = item.startTime + secend;
+    item.endTime = item.endTime + secend;
     item.x = 0
     // 发起action,修改rest的store，storage数据
     this.store.dispatch(new todayRest.EditRestAction(item));
@@ -119,29 +116,34 @@ export class TodayPage {
     console.log(e.target);
   }
   editRest(item) {
-    let prompt = this.alertCtrl.create({
-      title: "编辑",
-      inputs: [{
-        name: 'name',
-        value: item.name,
-        placeholder: '任务名称'
-      }],
-      buttons: [
-        {
-          text: '取消',
-          handler: data => {
-            console.log('Cancel clicked');
-          }
-        },
-        {
-          text: '保存',
-          handler: data => {
-            let newitem = Object.assign(item, data);
-            this.store.dispatch(new todayRest.EditRestAction(newitem));
-          }
-        }
-      ]
-    })
-    prompt.present();
+    this.modalCtrl.create('ModalTodayPage', item).present();
+    // let prompt = this.alertCtrl.create({
+    //   title: "编辑",
+    //   inputs: [{
+    //     name: 'name',
+    //     value: item.name,
+    //     placeholder: '任务名称'
+    //   },{
+    //     name: 'startTime',
+    //     value: (new Date()),
+    //     placeholder: '开始时间'
+    //   }],
+    //   buttons: [
+    //     {
+    //       text: '取消',
+    //       handler: data => {
+    //         console.log('Cancel clicked');
+    //       }
+    //     },
+    //     {
+    //       text: '保存',
+    //       handler: data => {
+    //         let newitem = Object.assign(item, data);
+    //         this.store.dispatch(new todayRest.EditRestAction(newitem));
+    //       }
+    //     }
+    //   ]
+    // })
+    // prompt.present();
   }
 }

@@ -12,10 +12,18 @@ export class TimeToPositionPipe implements PipeTransform {
   /**
    * 时间转为为定位位置
    */
-  transform(nowTime: Date, minTime: Date, type: string = 'min', ...args) {
+  transform(nowTime, minTime, type: string = 'min', ...args) {
     // 将时间转为定位
-    let nowSecond = nowTime.getTime();
-    let minSecond = minTime.getTime();
+    let nowSecond;
+    let minSecond;
+    let strtype = typeof nowTime;
+    if (strtype === 'string'||strtype === 'number') {
+      nowSecond = nowTime;
+      minSecond = minTime;
+    } else {
+      nowSecond = nowTime.getTime();
+      minSecond = minTime.getTime();
+    }
     let second = nowSecond - minSecond; // 当前时间距离起点时间的大小
     let Height = 15;// 每个刻度设置为15px;
     let q;

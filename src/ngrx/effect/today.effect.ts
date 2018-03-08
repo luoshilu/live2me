@@ -65,6 +65,8 @@ export class TodayEffects {
                 return this.data.editRest(res)
                 .then((res) => {
                     if (res) {
+                        console.log(res);
+                        
                         return new restAction.SuccessRestAction();
                     } else {
                         return new restAction.FailRestAction(res);

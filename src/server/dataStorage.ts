@@ -74,7 +74,11 @@ export class DataStorage {
    * 获取日程列表数据
    */
   getRests(): Promise<Rest[]> {
-    return this.storage.get('Rest').then(res=>res).catch(()=>false);
+    return this.storage.get('Rest').then(res=>{
+      console.log(res);
+      
+      return res;
+    }).catch(()=>false);
   }
   /**
    * 添加日程数据

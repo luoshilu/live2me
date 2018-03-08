@@ -1,0 +1,40 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title><span>编辑</span></ion-title>
+    <ion-buttons start>
+        <button ion-button (click)="dismiss()">
+          <span ion-text color="primary" showWhen="ios">取消</span>
+          <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+        </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label floating>名称</ion-label>
+      <ion-input [(ngModel)]="rest.name"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-item>
+        <ion-label>开始时间</ion-label>
+        <ion-datetime displayFormat="YYYY-MM-DDTHH:mm" pickerFormat="hh:mm" [(ngModel)]="rest.startTime"></ion-datetime>
+    </ion-item>
+    <ion-item>
+        <ion-label>结束时间</ion-label>
+        <ion-datetime displayFormat="YYYY-MM-DDTHH:mm" pickerFormat="hh:mm" [(ngModel)]="rest.endTime"></ion-datetime>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-item *ngIf="id !== '0'">
+        <button ion-button (click)="save()">保存</button>
+        <button ion-button color="danger" (click)="del()">删除</button>
+      </ion-item>
+  </ion-list>
+</ion-content>
+
