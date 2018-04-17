@@ -48,3 +48,9 @@ import {Operat} from './operators';
         this.complent = false;
     }
  }
+
+ // 用户
+ export class User {
+     name: string;
+     info: string;
+ }
