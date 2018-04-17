@@ -1,17 +1,17 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Contact
+      个人中心
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
-    <ion-item>
-      <ion-icon name="ionic" item-start></ion-icon>
-      @ionicframework
-    </ion-item>
+      <ion-list no-lines>
+        <button ion-item *ngFor="let item of items" (click)="openItem(item)">
+          {{ item }}
+        </button> 
+      </ion-list>
   </ion-list>
 </ion-content>

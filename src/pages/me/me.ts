@@ -7,9 +7,12 @@ import { NavController, IonicPage } from 'ionic-angular';
   templateUrl: 'me.html'
 })
 export class MePage {
-
+  public items: String[] = ['个人资料', '我的日程记录', '统计图', '设置', '关于Live2me']
   constructor(public navCtrl: NavController) {
 
   }
-
+  openItem(item){
+    console.log(item);
+    
+  }
 }
