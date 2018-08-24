@@ -1,0 +1,4 @@
+.sourcemaps/
+coverage/
+node_modules/
+www/
