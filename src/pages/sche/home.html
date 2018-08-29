@@ -10,7 +10,7 @@
       <ion-list-header *ngIf="(scheduleIds | async).length > 0" color="danger">
         待完成
       </ion-list-header>
-        <a ion-item *ngIf="(scheduleIds | async).length === 0">今天还没有安排噢</a>
+        <a ion-item *ngIf="(scheduleIds | async).length === 0">还没有新的计划噢</a>
         <a ion-item *ngFor="let item of (schedules | async)" (click)="openModal({item: item})">
           <span *ngIf="!item.component">{{item.name}}</span>
         </a>
