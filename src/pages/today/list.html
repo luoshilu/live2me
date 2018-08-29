@@ -7,45 +7,49 @@
 </ion-header>
 
 <ion-content padding>
-  <ng-time-axis></ng-time-axis>
+  <ng-time-axis [showMinTime]="axisMinTime" [showMaxTime]="axisMaxTime"></ng-time-axis>
   <div class="today-content">
     <!-- 当前时间 -->
-    <div class="now-axis" [style.top]="(nowTime | timeToPosition: minTime: 'min') + 'px'">
+    <div class="now-axis" [style.top]="(nowTime | timeToPosition: axisMinTime: 'min') + 'px'">
       <div class="time-detail"><span>现在是{{nowTime | date:'HH:mm'}}</span></div>
     </div>
     <!-- 任务计划卡 -->
     <div class="rest-card"
-        [ngClass]="{moving: restsObj[id].moving}"
-        *ngFor="let id of restIds$ | async;let i=index"
-        (swiperight)="delRest(restsObj[id])"
-        (press)="press(id)"
-        (panmove)="panmove($event, id)"
-        (panend)="panend(restsObj[id])"
-        (click)="editRest(restsObj[id])"
-        [style.left]="restsObj[id].x + 'px'"
-        [style.top]="restsObj[id].moving?restsObj[id].y + 'px' : (restsObj[id].startTime | timeToPosition: minTime: 'min') + 'px'"
-        (rotatestart)="rotatestart($event, id)"
-        (rotatemove)="rotatemove($event, id)"
-        (rotateend)="rotateend($event, id)"
-        >
-        <ion-card>
-          <ion-card-header>
-              <ion-item>
-                <ion-label color="danger">{{restsObj[id].name}}</ion-label>
-                <ion-checkbox *ngIf="restsObj[id].complent" color="danger" checked="true" disabled="true" readonly></ion-checkbox>
-              </ion-item>
-          </ion-card-header>
+      [ngClass]="{moving: restsObj[id].moving}"
+      *ngFor="let id of restIds$ | async;let i=index"
+      (swiperight)="delRest(restsObj[id])"
+      (press)="press(id)"
+      (panmove)="panmove($event, id)"
+      (panend)="panend(restsObj[id])"
+      (click)="editRest(restsObj[id])"
+      [style.left]="restsObj[id].x + 'px'"
+      [style.top]="restsObj[id].moving?restsObj[id].y + 'px' : (restsObj[id].startTime | timeToPosition: axisMinTime) + 'px'"
+      (rotatestart)="rotatestart($event, id)"
+      (rotatemove)="rotatemove($event, id)"
+      (rotateend)="rotateend($event, id)">
+      <ion-card>
+        <ion-card-header [style.height]="((restsObj[id].endTime - restsObj[id].startTime) | timeToHeight) + 'px' ">
+            <ion-item>
+              <ion-label color="danger">{{restsObj[id].name}}</ion-label>
+              <ion-checkbox *ngIf="restsObj[id].complent" color="danger" checked="true" disabled="true" readonly></ion-checkbox>
+            </ion-item>
+        </ion-card-header>
 
-          <ion-card-content *ngIf="restsObj[id].detail">
-              {{restsObj[id].detail}}
-          </ion-card-content>
+        <ion-card-content *ngIf="restsObj[id].detail">
+          {{restsObj[id].detail}}
+        </ion-card-content>
 
-        </ion-card>
-      </div>
+      </ion-card>
     </div>
-    <ion-fab right bottom>
-      <button ion-fab  mini color="primary" (click)="addRest()">
-        <ion-icon name="add"></ion-icon>
-      </button>
-    </ion-fab>
+  </div>
+  <ion-fab right bottom>
+    <button ion-fab mini color="primary" (click)="addRest()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+
+  <ion-infinite-scroll (ionInfinite)="$event.waitFor(doInfinite())">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
 </ion-content>

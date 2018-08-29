@@ -17,6 +17,10 @@
         width: 100%;
         left: 0;
         transition: left top right bottom 2s ease-in-out;
+        .card-header {
+            display: flex;
+            align-items: center;
+        }
     }
     .rest-card.moving {
         border: 1px dashed #C41717;

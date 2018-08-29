@@ -5,11 +5,15 @@ import { IonicPageModule } from 'ionic-angular';
 import { TimeAxisModule } from '../../components/ng-time-axis/index.module';
 
 //pipes
-import { TimeToPositionPipe } from '../../pipes/time-to-position/time-to-position';
+import { TimeToPositionPipe } from "../../pipes/time-to-position/time-to-position";
+import { MoveToTimePipe } from "../../pipes/move-to-time/move-to-time";
+import { TimeToHeightPipe } from "../../pipes/time-to-height/time-to-height";
 @NgModule({
     declarations: [
         TodayPage,
-        TimeToPositionPipe
+        TimeToPositionPipe,
+        MoveToTimePipe,
+        TimeToHeightPipe
     ],
     schemas: [
         CUSTOM_ELEMENTS_SCHEMA,

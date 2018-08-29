@@ -25,13 +25,12 @@ export class TimeToPositionPipe implements PipeTransform {
       minSecond = minTime.getTime();
     }
     let second = nowSecond - minSecond; // 当前时间距离起点时间的大小
-    let Height = 15;// 每个刻度设置为15px;
-    let q;
+    let q = 60*1000; // 时间单位 分
+    let timePrepLength = 1;// 时间和长度的比值;
     let top: number = 0;
     switch(type) {
       case 'min':
-        q = 15*60*1000; // 每个刻度设置为１５分钟
-        top = (second/q * Height);
+        top = (second/q * timePrepLength);
         break;
       default:
         top = 0;

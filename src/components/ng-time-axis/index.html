@@ -2,7 +2,7 @@
     <div class="ng-ta-axis">
         <ul class="ng-ta-scale">
             <li *ngFor="let scale of scales,let i = index" [class.hour]="scale%(4*q) === 0" [class.half]="scale%(2*q) === 0">
-                <span *ngIf="scale%(4*q) === 0&&userMinTime">{{scale + userMinTime.getTime() | date: 'HH:mm'}}</span>
+                <span *ngIf="scale%(4*q) === 0&&showMinTime">{{scale + showMinTime.getTime() | date: 'HH:mm'}}</span>
             </li>
         </ul>
     </div>
