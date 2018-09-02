@@ -1,6 +1,7 @@
 
 import { Action } from '@ngrx/store';
 import { Rest } from '../../server/Utils';
+import { Data } from '../../server/data';
 
 
 export const LOAD_REST ='LOAD_REST';
@@ -15,7 +16,7 @@ export const REST_FAILDED = 'REST_FAILDED'; // 日程操作失败
 
 export class LoadRestAction implements Action {
     readonly type = LOAD_REST;
-    constructor (){}
+    constructor (public min?, public max?){}
 }
 
 export class AddRestAction implements Action {

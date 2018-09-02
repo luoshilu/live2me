@@ -8,6 +8,7 @@ import { Actions, Effect } from "@ngrx/effects";
 
 import * as restAction from "../action/today.action";
 import { Rest } from "../../server/Utils";
+import { log } from "util";
 
 @Injectable()
 export class TodayEffects {
@@ -16,10 +17,10 @@ export class TodayEffects {
     .ofType(restAction.LOAD_REST)
     // .startWith(new restAction.LoadrestAction())
     .map(res => res)
-    .mergeMap(() => {
+    .mergeMap((res) => {
       // 获取日程列表
       return this.data
-        .getRests()
+        .getRests(res.min, res.max)
         .then((res: Rest[]) => {
           if (res) {
             return new restAction.SuccessLoadRestAction(res);

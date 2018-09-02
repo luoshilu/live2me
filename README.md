@@ -33,7 +33,9 @@
 - [x] 创建任务
   > ~~关于 ionic3 modal 的使用 -- 完成~~
 - [x] 根据时间长短　设置rest的高度
-- [ ] 相同时间内有２个任务以上时的排版问题
+- [x] 首次只拉取当前时间轴内的任务,下个时间轴时再拉取新内容
+- [ ] 相同时间内有２个任务以上时的排版
+- [ ] 可浏览历史记录
 - [ ] 未完成，正在做，完成　三种rest展现设计
 - [ ] 可以向上滑动打开过去的rest
 - [ ] 添加跳转到当前时间的快捷按钮
@@ -46,10 +48,10 @@
 * 未解决的问题
 
 - [ ] 修改rest，打开viewModal，点击取消按钮，调用this.viewCtrl.dismiss();会使rest数据变化
+- [ ] rest会渲染两次
 
 ### 常用命令
 
 - ionic g page Setting
   > 创建一个界面，会自动在 page 目录下生成*.html,*.module.ts,_.scss,_,html 文件
-  > 更多创建组件，指令，管道的命令
-  > [](https://ionicframework.com/docs/cli/generate/)
+  > [更多](https://ionicframework.com/docs/cli/generate/)创建组件，指令，管道的命令

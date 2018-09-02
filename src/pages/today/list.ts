@@ -53,7 +53,7 @@ export class TodayPage {
     private modalCtrl: ModalController
   ) {
     
-    this.store.dispatch(new todayRest.LoadRestAction());
+    this.store.dispatch(new todayRest.LoadRestAction(this.axisMinTime, this.axisMaxTime));
 
     this.restList$ = store.select(fromRoot.getRestsList);
     this.restsObj$ = store.select(fromRoot.getRests);
@@ -88,6 +88,7 @@ export class TodayPage {
       // 延长时间轴
       let amt = this.axisMaxTime;
       this.axisMaxTime = date("24 hours later", date("1 hours later",amt));
+      this.store.dispatch(new todayRest.LoadRestAction(this.axisMinTime, this.axisMaxTime));
       if (this.axisMaxTime) {
         resolve();
       }

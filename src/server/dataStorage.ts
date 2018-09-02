@@ -96,12 +96,20 @@ export class DataStorage {
   /**
    * 获取日程列表数据
    */
-  getRests(): Promise<Rest[]> {
+  getRests(mintime?: number|Date,maxtime?: number|Date): Promise<Rest[]> {
     return this.storage
       .get("Rest")
       .then(res => {
-
-        return res;
+        if(res){
+          if(mintime && maxtime){
+            mintime = typeof mintime === 'number'?mintime:mintime.getTime()
+            maxtime = typeof maxtime === 'number'?maxtime:maxtime.getTime()
+            let filter_res = res.filter(rest => {
+              return (rest.startTime > mintime && rest.startTime < maxtime) || (rest.endTime > mintime && rest.endTime < maxtime);
+            });
+            return filter_res;
+          }
+        }
       })
       .catch(() => false);
   }
