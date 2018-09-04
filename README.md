@@ -2,7 +2,7 @@
 
 # live2me
 
-[![Build Status](https://travis-ci.org/luoshilu/live2me.svg?branch=master)](https://travis-ci.org/luoshilu/liva2me)
+[![Build Status](https://travis-ci.org/luoshilu/live2me.svg?branch=master)](https://travis-ci.org/luoshilu/live2me)
 
 </p>
 
