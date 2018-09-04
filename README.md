@@ -1,8 +1,12 @@
+<p align="center">
+
 # live2me
 
-> 一个关于个人记录的 APP
-
 [![Build Status](https://travis-ci.org/luoshilu/live2me.svg?branch=master)](https://travis-ci.org/luoshilu/liva2me)
+
+</p>
+
+> 一个关于个人记录的 APP
 
 ### 项目 idea
 
@@ -43,8 +47,8 @@
 
 - [ ] 可以向上滑动打开过去的rest
 - [ ] 未完成，正在做，完成　三种rest展现
-- [ ] 添加跳转到当前时间的快捷按钮
-- [ ] 添加输入日期的验证
+- [x] 添加跳转到当前时间的快捷按钮
+- [x] 添加输入日期的验证
 
 * 计划
 
@@ -53,7 +57,7 @@
 * 未解决的问题
 
 - [ ] 修改rest，打开viewModal，点击取消按钮，调用this.viewCtrl.dismiss();会使rest数据变化
-- [ ] rest会渲染两次
+- [x] rest会渲染两次
 
 ### 常用命令
 
