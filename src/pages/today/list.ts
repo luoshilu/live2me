@@ -49,7 +49,7 @@ export class TodayPage {
     private store: Store<fromRoot.State>,
     private timeTopositionPipe: TimeToPositionPipe,
     private moveToTimePipe: MoveToTimePipe,
-    private timeToHeightPipe: TimeToHeightPipe,
+    // private timeToHeightPipe: TimeToHeightPipe,
     private modalCtrl: ModalController
   ) {
     
@@ -83,9 +83,10 @@ export class TodayPage {
     // );
     // scrollY = h;
   }
+  
   doInfinite(): Promise<any> {
     return new Promise(resolve => {
-      // 延长时间轴
+      // 向下延长时间轴
       let amt = this.axisMaxTime;
       this.axisMaxTime = date("24 hours later", date("1 hours later",amt));
       this.store.dispatch(new todayRest.LoadRestAction(this.axisMinTime, this.axisMaxTime));
@@ -125,6 +126,9 @@ export class TodayPage {
     // 设置元素定位属性
     this.restsObj[id].x = mvx + this.x;
     this.restsObj[id].y = mvy + this.y;
+  }
+  goNow() {
+    document.getElementsByClassName("scroll-content")[0].scrollTop = 0;
   }
   panend(item) {
     if (!item.moving) {

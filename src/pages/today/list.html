@@ -6,7 +6,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content id="scroll" padding>
   <ng-time-axis [showMinTime]="axisMinTime" [showMaxTime]="axisMaxTime"></ng-time-axis>
   <div class="today-content">
     <!-- 当前时间 -->
@@ -43,12 +43,15 @@
     </div>
   </div>
   <ion-fab right bottom>
+      <button ion-fab mini color="danger" (click)="goNow()">
+          <ion-icon name="arrow-dropup"></ion-icon>
+        </button>
     <button ion-fab mini color="primary" (click)="addRest()">
       <ion-icon name="add"></ion-icon>
     </button>
   </ion-fab>
 
-  <ion-infinite-scroll (ionInfinite)="$event.waitFor(doInfinite())">
+  <ion-infinite-scroll icon="ion-loading-a" distance="5%" (ionInfinite)="$event.waitFor(doInfinite())">
     <ion-infinite-scroll-content></ion-infinite-scroll-content>
   </ion-infinite-scroll>
 

@@ -15,6 +15,7 @@ import {Operat} from './operators';
     x: number;
     height: number;
     y: number;
+    width: string; // 宽度(同时间段有多个任务时，宽度取百分比,left)
     moving: Boolean; // 是否在移动中
     constructor(name: string){
         this.id = 'rest' + (new Date()).getTime();
